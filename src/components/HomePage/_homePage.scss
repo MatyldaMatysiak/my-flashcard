@@ -1,0 +1,36 @@
+@import '../../basic_scss/colors';
+@import '../../basic_scss/variables';
+
+.homepage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-white;
+  padding: 5% 0;
+
+  .optionBox {
+    cursor: pointer;
+    width: 40%;
+    text-align: center;
+    background-color: $color-secondary;
+    padding: 7% 2%;
+    border-radius: $spacing-base;
+    font-family: $font-text;
+    font-weight: 700;
+    font-size: 3rem;
+    box-shadow: 0px 8px 24px 0px rgba(7, 2, 39, 0.4);
+
+    &:hover {
+      background-color: #3b7be3;
+    }
+
+    p {
+      text-transform: uppercase;
+    }
+
+    &:last-child{
+      margin-left: $spacing-base*5;
+    }
+
+  }
+}
