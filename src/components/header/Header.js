@@ -4,14 +4,19 @@ import './_header.scss';
 
 export default function Header() {
     return (
-        <header className="header">
-            <div className="logo">
-                <p className="logo__text">MyFlashcards</p>
+        <header>
+            <div className="container">
+                <div className="header">
+                    <div className="logo">
+                        <p className="logo__text">MyFlashcards</p>
+                    </div>
+                    <div className="user">
+                        <p className="user__name">Hi Name!</p>
+                        <img src={UserImage} alt="user" className="user__image"/>
+                    </div>
+                </div>
             </div>
-            <div className="user">
-                <p className="user__name">Name</p>
-                <img src={UserImage} alt="user" className="user__image"/>
-            </div>
+
         </header>
     )
 }

@@ -1,23 +1,36 @@
 @import '../../basic_scss/colors';
 @import '../../basic_scss/variables';
 
+header {
+  background-color: $color-primary;
+  position: absolute;
+  width: 100%;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
-  background-color: $color-primary;
+  align-items: center;
   color: $color-bg;
+  padding: $spacing-base*1.5 0;
 
   .logo__text {
     font-family: $font-logo;
     font-size: 2rem;
+
   }
 
   .user {
     display: flex;
+    align-items: center;
 
+    .user__name {
+      font-family: $font-text;
+      margin-right: $spacing-base;
+    }
     .user__image {
-      width: 2rem;
-      height: 2rem;
+      width: 2.5rem;
+      height: 2.5rem;
       border-radius: 50%;
     }
   }
