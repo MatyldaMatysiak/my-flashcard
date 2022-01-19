@@ -2,6 +2,7 @@ import React from "react";
 import './_homePage.scss';
 
 export default function HomePage () {
+
     return (
         <div className="homepage">
             <div className="optionBox">
