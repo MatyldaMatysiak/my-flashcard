@@ -78,13 +78,17 @@ form {
       border-radius: $spacing-base*0.5;
       width: 20%;
       font-weight: 700;
-
+      text-align: center;
+      color: $color-white;
     }
     .btn__submit {
       margin-right: $spacing-base*2;
       background-color: $color-secondary;
-      color: $color-white;
+    }
 
+    .btn__cancel {
+      border: 1px solid $color-secondary;
+      color: $color-secondary;
     }
   }
 }

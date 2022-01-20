@@ -1,20 +1,21 @@
 import React from "react";
 import './_homePage.scss';
+import { Link } from "react-router-dom";
 
 export default function HomePage () {
 
     return (
         <div className="homepage">
-            <div className="optionBox">
+            <Link className="optionBox" to="/">
                 <p className="option__yourFlashcards">
                     Your<br/>flashcards
                 </p>
-            </div>
-            <div className="optionBox">
+            </Link>
+            <Link className="optionBox" to="/add">
                 <p className="option__newFlashcard">
                     Add<br/>flashcard
                 </p>
-            </div>
+            </Link>
         </div>
     )
 }

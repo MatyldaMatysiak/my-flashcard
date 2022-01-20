@@ -1,5 +1,6 @@
 import React from "react";
 import './_newFlashcard.scss'
+import {Link} from "react-router-dom";
 
 export default function NewFlashcard() {
     return (
@@ -30,8 +31,8 @@ export default function NewFlashcard() {
                 </div>
             </section>
             <div className="buttonBox">
-                <button className="btn btn__submit">Add</button>
-                <button className="btn btn__cancel">Cancel</button>
+                <Link className="btn btn__submit" to="/">Add</Link>
+                <Link className="btn btn__cancel" to="/">Cancel</Link>
             </div>
         </form>
     )
