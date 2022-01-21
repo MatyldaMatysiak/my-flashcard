@@ -3,10 +3,12 @@ import './_appBody.scss'
 import HomePage from "../HomePage/HomePage";
 import NewFlashcard from "../NewFlashcard/NewFlashcard";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import colRef from "../../firebaseConfig";
-import {addDoc, getDocs} from "firebase/firestore";
+import {db} from "../../firebaseConfig";
+import {addDoc, collection, getDocs} from "firebase/firestore";
 
 export default function AppBody() {
+    const colRef = collection(db, 'flashcards');
+
     const [files, setFiles] = useState([]);
 
     console.log(files);
@@ -22,9 +24,9 @@ export default function AppBody() {
             }).catch(err => console.log(err.message))
     }, [])
 
-    const handleAddFlashcard = (param) => {
-        addDoc(colRef, param).catch(() => {})
-        setFiles([...files, param])
+    const handleAddFlashcard = (flashcard) => {
+        addDoc(colRef, flashcard).catch(() => {})
+        setFiles([...files, flashcard])
     }
 
     return (
