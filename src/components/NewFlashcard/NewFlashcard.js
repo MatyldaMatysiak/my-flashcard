@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import './_newFlashcard.scss'
 import {Link} from "react-router-dom";
 
-export default function NewFlashcard() {
+export default function NewFlashcard({handleAddFlashcard}) {
     const [field, setField] = useState("");
     const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
@@ -14,9 +14,7 @@ export default function NewFlashcard() {
         setFilter("")
     }
 
-    const handleAddFlashcard = (e) => {
-        e.preventDefault()
-
+    const addNewFlashcard = () => {
         const newFlashcard = {
             field,
             question,
@@ -24,8 +22,8 @@ export default function NewFlashcard() {
             filters,
             status: "learning"
         }
+        handleAddFlashcard(newFlashcard)
     }
-
 
     return (
         <form onSubmit={(e) => e.preventDefault() }>
@@ -76,7 +74,7 @@ export default function NewFlashcard() {
                 </div>
             </section>
             <div className="buttonBox">
-                <Link className="btn btn__submit" to="/" onClick={handleAddFlashcard}>Add</Link>
+                <Link className="btn btn__submit" to="/" onClick={addNewFlashcard}>Add</Link>
                 <Link className="btn btn__cancel" to="/">Cancel</Link>
             </div>
         </form>
