@@ -6,7 +6,7 @@ export default function HomePage () {
 
     return (
         <div className="homepage">
-            <Link className="optionBox" to="/">
+            <Link className="optionBox" to="/sets">
                 <p className="option__yourFlashcards">
                     Your<br/>flashcards
                 </p>

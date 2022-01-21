@@ -5,13 +5,14 @@ import NewFlashcard from "../NewFlashcard/NewFlashcard";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {db} from "../../firebaseConfig";
 import {addDoc, collection, getDocs} from "firebase/firestore";
+import YourFields from "../yourFields/YourFields";
 
 export default function AppBody() {
     const colRef = collection(db, 'flashcards');
 
     const [files, setFiles] = useState([]);
 
-    console.log(files);
+    //console.log(files);
 
     useEffect(() => {
         getDocs(colRef)
@@ -37,8 +38,11 @@ export default function AppBody() {
                         <Route exact path="/">
                             <HomePage />
                         </Route>
-                        <Route path="/add">
+                        <Route exact path="/add">
                             <NewFlashcard handleAddFlashcard={handleAddFlashcard}/>
+                        </Route>
+                        <Route exact path="/sets">
+                            <YourFields files={files}/>
                         </Route>
                     </Switch>
                 </Router>

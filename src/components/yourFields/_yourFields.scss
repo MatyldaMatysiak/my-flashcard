@@ -1,0 +1,66 @@
+@import '../../basic_scss/colors';
+@import '../../basic_scss/variables';
+
+.sets {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5% 0;
+  font-family: $font-text;
+  color: $color-text;
+
+  .setsNavigation {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+
+    .setsNavigation__box {
+      background-color: $color-white;
+      cursor: pointer;
+      width: 22%;
+      border-radius: $spacing-base;
+      padding: 6% 2%;
+      text-align: center;
+      box-shadow: 0 8px 24px 0 rgba(7, 2, 39, 0.4);
+
+    }
+  }
+
+  .setsHeader {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    margin: 4% 0;
+    color: $color-ligt-grey;
+
+    h2 {
+      text-transform: uppercase;
+    }
+
+    .setsHeader__line {
+      background-color: $color-ligt-grey;
+      width: 35%;
+      height: 1px;
+    }
+
+  }
+
+  .setsContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    .setBox {
+      background-color: $color-white;
+      cursor: pointer;
+      width: 22%;
+      border-radius: $spacing-base;
+      padding: 6% 2%;
+      text-align: center;
+      box-shadow: 0 8px 24px 0 rgba(7, 2, 39, 0.4);
+      margin: 3%;
+    }
+  }
+}
