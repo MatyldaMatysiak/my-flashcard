@@ -1,0 +1,20 @@
+@import '../../basic_scss/colors';
+@import '../../basic_scss/variables';
+
+.setPage {
+  display: flex;
+  justify-content: space-around;
+  align-items: start;
+
+  .filterElement {
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+
+  }
+
+
+}

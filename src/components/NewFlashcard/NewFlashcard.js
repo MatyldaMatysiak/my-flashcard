@@ -27,7 +27,7 @@ export default function NewFlashcard({handleAddFlashcard, setAdd, add}) {
     }
 
     return (
-        <form onSubmit={(e) => e.preventDefault() }>
+        <form onSubmit={(e) => e.preventDefault() } className="newFlashAddForm">
             <section className="flashcardInfo">
                 <div className="flashcardInfo__basic">
                     <div className="field">

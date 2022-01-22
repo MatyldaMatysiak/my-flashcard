@@ -4,8 +4,6 @@ import "./_yourFields.scss"
 
 export default function YourFields({files}) {
     const [sets, setSets] = useState([]);
-    console.log(files);
-    console.log(sets)
 
     useEffect(() => {
         let newSets = [];
