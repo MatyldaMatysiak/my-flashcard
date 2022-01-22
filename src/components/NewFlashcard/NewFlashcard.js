@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import './_newFlashcard.scss'
 import {Link} from "react-router-dom";
 
-export default function NewFlashcard({handleAddFlashcard}) {
+export default function NewFlashcard({handleAddFlashcard, setAdd, add}) {
     const [field, setField] = useState("");
     const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
@@ -22,7 +22,8 @@ export default function NewFlashcard({handleAddFlashcard}) {
             filters,
             status: "learning"
         }
-        handleAddFlashcard(newFlashcard)
+        handleAddFlashcard(newFlashcard);
+        setAdd(!add)
     }
 
     return (

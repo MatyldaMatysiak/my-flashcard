@@ -41,9 +41,9 @@ export default function YourFields({files}) {
                 <div className="setsHeader__line"></div>
             </div>
             <div className="setsContainer">
-                {sets.map(set => <div className="setBox" key={set}>
+                {sets.map(set => <Link to={`/sets/${set}`} className="setBox" key={set}>
                    <p className="setName">{set}</p>
-                </div>)}
+                </Link>)}
             </div>
         </div>
     )

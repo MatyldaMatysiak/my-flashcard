@@ -6,12 +6,15 @@ import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {db} from "../../firebaseConfig";
 import {addDoc, collection, getDocs} from "firebase/firestore";
 import YourFields from "../yourFields/YourFields";
+import Set from "../Set/Set";
 
 export default function AppBody() {
     const colRef = collection(db, 'flashcards');
 
+    const [add, setAdd] = useState(false)
     const [files, setFiles] = useState([]);
 
+    console.log(add)
     //console.log(files);
 
     useEffect(() => {
@@ -23,11 +26,10 @@ export default function AppBody() {
             })
             setFiles([...flashcards])
             }).catch(err => console.log(err.message))
-    }, [])
+    }, [add])
 
     const handleAddFlashcard = (flashcard) => {
         addDoc(colRef, flashcard).catch(() => {})
-        setFiles([...files, flashcard])
     }
 
     return (
@@ -39,10 +41,13 @@ export default function AppBody() {
                             <HomePage />
                         </Route>
                         <Route exact path="/add">
-                            <NewFlashcard handleAddFlashcard={handleAddFlashcard}/>
+                            <NewFlashcard handleAddFlashcard={handleAddFlashcard} setAdd={setAdd} add={add}/>
                         </Route>
                         <Route exact path="/sets">
-                            <YourFields files={files}/>
+                            <YourFields files={files} />
+                        </Route>
+                        <Route exact path="/sets/:field">
+                            <Set files={files} add={add}/>
                         </Route>
                     </Switch>
                 </Router>
