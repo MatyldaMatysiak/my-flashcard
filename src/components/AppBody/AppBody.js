@@ -40,7 +40,6 @@ export default function AppBody() {
                     <Switch>
                         <Route exact path="/">
                             <HomePage />
-                            <Flashcard/>
                         </Route>
                         <Route exact path="/add">
                             <NewFlashcard handleAddFlashcard={handleAddFlashcard} setAdd={setAdd} add={add}/>

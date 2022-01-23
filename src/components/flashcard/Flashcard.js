@@ -1,9 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 import './_flashcard.scss';
 
 export default function Flashcard({question, answer}) {
+
+    const [side, setSide] = useState("front")
+
+    const handleChangeSide = () => {
+        if (side ==="front") {
+            setSide("back")
+        } else {
+            setSide("front")
+        }
+    }
+
     return (
-        <div className="flashcardBox">
+        <div className={`flashcardBox ${side}`} onClick={handleChangeSide}>
             <div className="flashcard__inner">
                 <div className="flashcard__front">
                     <p className="flashcard__text">{question}</p>

@@ -44,8 +44,8 @@
       transform: rotateY(180deg);
     }
   }
+}
 
-  &:hover .flashcard__inner {
-    transform: rotateY(180deg);
-  }
+.back .flashcard__inner {
+  transform: rotateY(180deg);
 }
