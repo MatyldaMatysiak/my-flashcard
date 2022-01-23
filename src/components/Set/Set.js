@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import './_set.scss';
+import Flashcard from "../flashcard/Flashcard";
 
 export default function Set({files, add}) {
     const { field } = useParams()
@@ -66,9 +67,11 @@ export default function Set({files, add}) {
                 </ul>
             </div>
             <div className="flashcards">
-                {filteredSet.map(flashcard => <div className="flashcardBox" key={flashcard.question}>
-                    <p className="flashcardName">{flashcard.question}</p>
-                </div>)}
+
+                {filteredSet.map(flashcard => <Flashcard key={flashcard.question} question={flashcard.question} answer={flashcard.answer}/>)}
+                {/*{filteredSet.map(flashcard => <div className="flashcardBox" key={flashcard.question}>*/}
+                {/*    <p className="flashcardName">{flashcard.question}</p>*/}
+                {/*</div>)}*/}
             </div>
             <form className="searchInSet" onSubmit={(e) => handleSearchFlash(e, searchFlashInput)}>
                 <label htmlFor="searchFlashcard" />

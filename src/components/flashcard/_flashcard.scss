@@ -1,0 +1,49 @@
+@import '../../basic_scss/colors';
+@import '../../basic_scss/variables';
+
+.flashcardBox {
+  width: 20%;
+  min-width: 250px;
+  min-height: 150px;
+  perspective: 1000px;
+
+  .flashcard__inner {
+    position: relative;
+    width: 100%;
+    min-height: 150px;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: $box-shadow-base;
+    border-radius: $spacing-base*0.5;
+
+
+    .flashcard__front,
+    .flashcard__back {
+      position: absolute;
+      min-height: 150px;
+      width: 100%;
+      backface-visibility: hidden;
+      color: $color-text;
+      background-color: $color-white;
+      border-radius: $spacing-base*0.5;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .flashcard__text {
+        font-family: $font-text;
+        font-size: 1.25rem;
+      }
+    }
+
+    .flashcard__back {
+      transform: rotateY(180deg);
+    }
+  }
+
+  &:hover .flashcard__inner {
+    transform: rotateY(180deg);
+  }
+}

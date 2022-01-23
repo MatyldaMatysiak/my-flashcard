@@ -7,6 +7,7 @@ import {db} from "../../firebaseConfig";
 import {addDoc, collection, getDocs} from "firebase/firestore";
 import YourFields from "../yourFields/YourFields";
 import Set from "../Set/Set";
+import Flashcard from "../flashcard/Flashcard";
 
 export default function AppBody() {
     const colRef = collection(db, 'flashcards');
@@ -39,6 +40,7 @@ export default function AppBody() {
                     <Switch>
                         <Route exact path="/">
                             <HomePage />
+                            <Flashcard/>
                         </Route>
                         <Route exact path="/add">
                             <NewFlashcard handleAddFlashcard={handleAddFlashcard} setAdd={setAdd} add={add}/>
