@@ -1,9 +1,16 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './_flashcard.scss';
 
 export default function Flashcard({question, answer, size, actualFlashCard}) {
 
     const [side, setSide] = useState("front")
+
+
+    console.log(side)
+
+    useEffect(() => {
+        setSide("front")
+    }, [actualFlashCard])
 
     const handleChangeSide = () => {
         if (side ==="front") {

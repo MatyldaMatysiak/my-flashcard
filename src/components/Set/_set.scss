@@ -3,18 +3,74 @@
 
 .setPage {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: start;
+  margin: $spacing-base*3 0;
 
-  .filterElement {
-    cursor: pointer;
+  .setPage__main {
+    width: 100%;
 
-    &:hover {
-      text-decoration: underline;
+    .main__header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: $spacing-base*2;
+
+      .switch__display {
+        display: flex;
+      }
+
+      .btn__oneFlashcard {
+        background-color: $color-secondary;
+        color: $color-white;
+        border: none;
+        text-align: start;
+        border-radius: $spacing-base*0.25;
+        margin: 0 $spacing-base*0.25 ;
+        padding: $spacing-base*0.7 $spacing-base;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
 
 
   }
+
+  .filtersBox {
+    background-color: $color-white;
+    padding: $spacing-base $spacing-base*2;
+    border-radius: $spacing-base*0.5;
+    box-shadow: $box-shadow-base;
+    width: 20%;
+    margin-right: $spacing-base*2;
+
+    .btn__filter {
+      background-color: $color-secondary;
+      color: $color-white;
+      border: none;
+      padding: $spacing-base $spacing-base*1.5;
+      width: 100%;
+      text-align: start;
+      border-radius: $spacing-base*0.5;
+      margin: $spacing-base 0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .filterElement {
+      cursor: pointer;
+      font-family: $font-text;
+      padding: $spacing-base*0.5;
+      border-bottom: 2px solid $color-white;
+
+      &:hover {
+        border-bottom: 2px solid $color-secondary;
+      }
+
+
+    }
+  }
+
 
 
 }
