@@ -1,0 +1,63 @@
+@import '../../basic_scss/colors';
+@import '../../basic_scss/variables';
+
+.flashcardBig__container {
+  margin: $spacing-base*5 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: $color-secondary;
+
+
+
+  .flashcardBig__editBox {
+    display: flex;
+    .btn {
+      background-color: transparent;
+      color: $color-secondary;
+      padding: 0 $spacing-base;
+      margin: 0 $spacing-base*0.5;
+      border: 1px solid transparent;
+
+      &:hover {
+        border: 1px solid $color-secondary;
+        border-radius: $spacing-base*0.5 ;
+      }
+    }
+
+    .btn-changeDisplay {
+      display: flex;
+      align-items: center;
+      .changeDisplay-icon {
+        margin: $spacing-base*0.5;
+      }
+    }
+  }
+
+  .flashcardBig__change {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+
+    .change__previous,
+    .change_next {
+      cursor: pointer;
+    }
+  }
+
+  .flashcardBig__back {
+    display: flex;
+    align-items: center;
+    padding: $spacing-base*0.5 $spacing-base;
+    background-color: $color-white;
+    border: 1px solid $color-secondary;
+    color: $color-secondary;
+    border-radius: $spacing-base*0.5;
+
+    .flashcardBig__back-text {
+      margin-left: $spacing-base;
+      font-family: $font-text;
+    }
+  }
+}

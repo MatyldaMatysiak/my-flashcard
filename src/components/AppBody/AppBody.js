@@ -7,16 +7,15 @@ import {db} from "../../firebaseConfig";
 import {addDoc, collection, getDocs} from "firebase/firestore";
 import YourFields from "../yourFields/YourFields";
 import Set from "../Set/Set";
-import Flashcard from "../flashcard/Flashcard";
+import FlashcardBig from "../flashcardBig/FlashcardBig";
 
 export default function AppBody() {
     const colRef = collection(db, 'flashcards');
 
     const [add, setAdd] = useState(false)
     const [files, setFiles] = useState([]);
+    const [setBig, setSetBig] = useState([])
 
-    console.log(add)
-    //console.log(files);
 
     useEffect(() => {
         getDocs(colRef)
@@ -27,6 +26,7 @@ export default function AppBody() {
             })
             setFiles([...flashcards])
             }).catch(err => console.log(err.message))
+
     }, [add])
 
     const handleAddFlashcard = (flashcard) => {
@@ -48,7 +48,10 @@ export default function AppBody() {
                             <YourFields files={files} />
                         </Route>
                         <Route exact path="/sets/:field">
-                            <Set files={files} add={add}/>
+                            <Set files={files} add={add} setSetBig={setSetBig}/>
+                        </Route>
+                        <Route exact path="/all">
+                            <FlashcardBig setBig={files}/>
                         </Route>
                     </Switch>
                 </Router>

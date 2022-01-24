@@ -22,8 +22,13 @@ body {
 a {
   text-decoration: none;
   color: $color-text;
+
+  &:active {
+    border: none;
+  }
 }
 
 button {
   cursor: pointer;
 }
+

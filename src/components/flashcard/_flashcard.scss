@@ -2,11 +2,13 @@
 @import '../../basic_scss/variables';
 
 .flashcardBox {
+  display: block;
   width: 20%;
   min-width: 250px;
   min-height: 150px;
   perspective: 1000px;
   margin: $spacing-base*2;
+  cursor: pointer;
 
   .flashcard__inner {
     position: relative;
@@ -48,4 +50,23 @@
 
 .back .flashcard__inner {
   transform: rotateY(180deg);
+}
+
+.flashcardBig {
+  width: 50%;
+  min-width: 450px;
+  min-height: 300px;
+
+  .flashcard__inner {
+    border-radius: $spacing-base;
+    min-width: 450px;
+    min-height: 300px;
+
+    .flashcard__front,
+    .flashcard__back {
+      border-radius: $spacing-base;
+      min-width: 450px;
+      min-height: 300px;
+    }
+  }
 }

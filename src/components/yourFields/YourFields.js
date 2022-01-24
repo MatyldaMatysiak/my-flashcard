@@ -18,7 +18,7 @@ export default function YourFields({files}) {
     return (
         <div className="sets">
             <div className="setsNavigation">
-                <Link className="setsNavigation__box" to="#">
+                <Link className="setsNavigation__box" to="/all">
                     <h3>All flashcards</h3>
                     <i> </i>
                 </Link>
