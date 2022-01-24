@@ -5,8 +5,8 @@ import {Link} from "react-router-dom";
 import FlashcardBig from "../flashcardBig/FlashcardBig";
 import Tiles from "../tiles/Tiles";
 
-export default function Set({files, add, setSetBig, handleDeleteFlashcard, remove, setRemove} ) {
-    const { field } = useParams()
+export default function Set({files, add, setSetBig, handleDeleteFlashcard, remove, setRemove}) {
+    const {field} = useParams()
     const [set, setSet] = useState([])
     const [filtersList, setFilterList] = useState([])
     const [filteredSet, setFilteredSet] = useState([])
@@ -31,7 +31,7 @@ export default function Set({files, add, setSetBig, handleDeleteFlashcard, remov
 
         setFilterList([...newFiltersList])
         setFilteredSet([...newSet])
-        setSetBig([...newSet])
+        // setSetBig([...newSet])
     }, [files, field, add, remove])
 
     const handleChooseFilter = (filter) => {
@@ -80,12 +80,15 @@ export default function Set({files, add, setSetBig, handleDeleteFlashcard, remov
                         <p>Add flashcard</p>
                     </button>
                     <ul>
-                        {filtersList.map(filter => <li className="filterElement" key={filter} onClick={() => handleChooseFilter(filter)}>{filter}</li>)}
+                        {filtersList.map(filter => <li className="filterElement" key={filter}
+                                                       onClick={() => handleChooseFilter(filter)}>{filter}</li>)}
                     </ul>
-                    <Link to="/sets"><button className="btn__filter">
-                        <i className="fas fa-arrow-left"></i>
-                        <p>Back to sets</p>
-                    </button></Link>
+                    <Link to="/sets">
+                        <button className="btn__filter">
+                            <i className="fas fa-arrow-left"></i>
+                            <p>Back to sets</p>
+                        </button>
+                    </Link>
                 </div>
                 <div className="setPage__main">
                     <div className="main__header">
@@ -98,8 +101,9 @@ export default function Set({files, add, setSetBig, handleDeleteFlashcard, remov
                             </button>
                         </div>
                         <form className="searchInSet" onSubmit={(e) => handleSearchFlash(e, searchFlashInput)}>
-                            <label htmlFor="searchFlashcard" />
-                            <input type="text" id="searchFlashcard" placeholder="find flashcard..." value={searchFlashInput} onChange={(e) => setSearchFlashInput(e.target.value)}/>
+                            <label htmlFor="searchFlashcard"/>
+                            <input type="text" id="searchFlashcard" placeholder="find flashcard..."
+                                   value={searchFlashInput} onChange={(e) => setSearchFlashInput(e.target.value)}/>
                             <button type="submit">
                                 <i className="fas fa-search"></i>
                             </button>
@@ -107,7 +111,9 @@ export default function Set({files, add, setSetBig, handleDeleteFlashcard, remov
                     </div>
 
                     <div className="flashcards">
-                        {tiles ? <Tiles filteredSet={filteredSet}/> : <FlashcardBig filteredSet={filteredSet} handleDeleteFlashcard={handleDeleteFlashcard} setRemove={setRemove} remove={remove}/>}
+                        {tiles ? <Tiles filteredSet={filteredSet}/> :
+                            <FlashcardBig filteredSet={filteredSet} handleDeleteFlashcard={handleDeleteFlashcard}
+                                          setRemove={setRemove} remove={remove}/>}
                     </div>
 
                 </div>
