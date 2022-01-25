@@ -12,13 +12,12 @@ export default function Set({files, add, handleEditFlashcard, handleDeleteFlashc
     const [filteredSet, setFilteredSet] = useState([])
     const [searchFlashInput, setSearchFlashInput] = useState("")
     const [tiles, setTiles] = useState(true)
+    const [loader, setLoader] = useState("loading")
 
     useEffect(() => {
         const newSet = files.filter(function (file) {
             return file.field === field;
         });
-
-        setSet([...newSet]);
 
         let newFiltersList = ["all"];
         newSet.forEach(list => {
@@ -27,11 +26,13 @@ export default function Set({files, add, handleEditFlashcard, handleDeleteFlashc
                     newFiltersList.push(filter)
                 }
             })
+
         })
 
         setFilterList([...newFiltersList])
+        setSet([...newSet]);
         setFilteredSet([...newSet])
-        // setSetBig([...newSet])
+        setLoader("loaded")
     }, [files, field, add, remove])
 
     const handleChooseFilter = (filter) => {
@@ -44,6 +45,7 @@ export default function Set({files, add, handleEditFlashcard, handleDeleteFlashc
             });
             setFilteredSet([...newFilteredSet])
         }
+
     }
 
     const handleSearchFlash = (e, searchFlashInput) => {
@@ -75,21 +77,24 @@ export default function Set({files, add, handleEditFlashcard, handleDeleteFlashc
         <>
             <div className="setPage">
                 <div className="filtersBox">
-                    <button className="btn__filter">
+                    <button className="btn__add">
                         <i className="fas fa-plus"></i>
                         <p>Add flashcard</p>
                     </button>
-                    <ul>
-                        {filtersList.map(filter => <li className="filterElement" key={filter}
-                                                       onClick={() => handleChooseFilter(filter)}>{filter}</li>)}
-                    </ul>
                     <Link to="/sets">
-                        <button className="btn__filter">
+                        <button className="btn__back">
                             <i className="fas fa-arrow-left"></i>
                             <p>Back to sets</p>
                         </button>
                     </Link>
+                    <h3 className="filterList__title">filters</h3>
+                    <ul>
+                        {filtersList.map(filter => <li className="filterElement" key={filter}
+                                                       onClick={() => handleChooseFilter(filter)}>{filter}</li>)}
+                    </ul>
+
                 </div>
+
                 <div className="setPage__main">
                     <div className="main__header">
                         <div className="switch__display">

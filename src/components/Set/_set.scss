@@ -5,10 +5,10 @@
   display: flex;
   justify-content: space-between;
   align-items: start;
-  margin: $spacing-base*3 0;
 
   .setPage__main {
     width: 100%;
+    margin: $spacing-base*3 0;
 
     .main__header {
       display: flex;
@@ -33,20 +33,18 @@
       }
     }
 
-
   }
 
   .filtersBox {
     background-color: $color-white;
-    padding: $spacing-base $spacing-base*2;
-    border-radius: $spacing-base*0.5;
+    padding: $spacing-base*2 $spacing-base*2 $spacing-base*5;
     box-shadow: $box-shadow-base;
-    width: 20%;
-    margin-right: $spacing-base*2;
+    width: 23%;
+    margin-right: $spacing-base*3;
 
-    .btn__filter {
-      background-color: $color-secondary;
-      color: $color-white;
+
+    .btn__add,
+    .btn__back {
       border: none;
       padding: $spacing-base $spacing-base*1.5;
       width: 100%;
@@ -55,6 +53,24 @@
       margin: $spacing-base 0;
       display: flex;
       justify-content: space-between;
+    }
+
+    .btn__add {
+      background-color: $color-secondary;
+      color: $color-white;
+    }
+
+    .btn__back {
+      background-color: $color-white;
+      color: $color-secondary;
+      border: 1px solid $color-secondary;
+    }
+
+    .filterList__title {
+      text-transform: uppercase;
+      color: $color-ligt-grey;
+      font-family: $font-text;
+      margin: $spacing-base*2 0 $spacing-base;
     }
 
     .filterElement {
