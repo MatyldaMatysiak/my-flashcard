@@ -4,7 +4,7 @@ import HomePage from "../HomePage/HomePage";
 import NewFlashcard from "../NewFlashcard/NewFlashcard";
 import {Route, Switch} from "react-router-dom";
 import {db} from "../../firebaseConfig";
-import {addDoc, collection, getDocs, deleteDoc, doc} from "firebase/firestore";
+import {addDoc, collection, getDocs, deleteDoc, doc, updateDoc} from "firebase/firestore";
 import YourFields from "../yourFields/YourFields";
 import Set from "../Set/Set";
 import FlashcardBig from "../flashcardBig/FlashcardBig";
@@ -40,6 +40,12 @@ export default function AppBody() {
         deleteDoc(docRef).catch(() => {});
     }
 
+    const handleEditFlashcard = (flashcardId, flashcard) => {
+        const docRef = doc(db, "flashcards", flashcardId);
+        updateDoc(docRef, flashcard).catch(() => {});
+        setAdd(!add)
+    }
+
     return (
         <main className="mainApp">
             <div className="container">
@@ -60,6 +66,7 @@ export default function AppBody() {
                              add={add}
                              setSetBig={setSetBig}
                              handleDeleteFlashcard={handleDeleteFlashcard}
+                             handleEditFlashcard={handleEditFlashcard}
                              remove={remove}
                              setRemove={setRemove}
                         />

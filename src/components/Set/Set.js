@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import FlashcardBig from "../flashcardBig/FlashcardBig";
 import Tiles from "../tiles/Tiles";
 
-export default function Set({files, add, setSetBig, handleDeleteFlashcard, remove, setRemove}) {
+export default function Set({files, add, handleEditFlashcard, handleDeleteFlashcard, remove, setRemove}) {
     const {field} = useParams()
     const [set, setSet] = useState([])
     const [filtersList, setFilterList] = useState([])
@@ -112,8 +112,11 @@ export default function Set({files, add, setSetBig, handleDeleteFlashcard, remov
 
                     <div className="flashcards">
                         {tiles ? <Tiles filteredSet={filteredSet}/> :
-                            <FlashcardBig filteredSet={filteredSet} handleDeleteFlashcard={handleDeleteFlashcard}
-                                          setRemove={setRemove} remove={remove}/>}
+                            <FlashcardBig filteredSet={filteredSet}
+                                          handleDeleteFlashcard={handleDeleteFlashcard}
+                                          handleEditFlashcard={handleEditFlashcard}
+                                          setRemove={setRemove}
+                                          remove={remove}/>}
                     </div>
 
                 </div>
