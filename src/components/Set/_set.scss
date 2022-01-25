@@ -79,6 +79,10 @@
       padding: $spacing-base*0.5;
       border-bottom: 2px solid $color-white;
 
+      &.active {
+        border-bottom: 2px solid $color-secondary;
+      }
+
       &:hover {
         border-bottom: 2px solid $color-secondary;
       }

@@ -1,2 +1,6 @@
 @use './basic_scss/base';
 @use './basic_scss/reset';
+
+body::-webkit-scrollbar{
+  display: none;
+}

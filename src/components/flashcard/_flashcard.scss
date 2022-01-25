@@ -58,6 +58,10 @@
   min-width: 450px;
   min-height: 300px;
 
+  .d-none {
+    display: none;
+  }
+
   .flashcard__inner {
     border-radius: $spacing-base;
     min-width: 450px;

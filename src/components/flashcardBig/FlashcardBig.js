@@ -13,6 +13,7 @@ export default function FlashcardBig({filteredSet, handleDeleteFlashcard, handle
 
     useEffect(() => {
         setActualFlashCard(filteredSet[0])
+        setFlashcardIndex(0)
     }, [filteredSet])
 
     const handleNextFlashcard = () => {
@@ -58,7 +59,9 @@ export default function FlashcardBig({filteredSet, handleDeleteFlashcard, handle
                 </div>
                 <div className="flashcardBig__change">
                     <i className="change__previous fas fa-chevron-left fa-3x" onClick={handlePreviousFlashcard}> </i>
-                    <Flashcard size={size} actualFlashCard={actualFlashCard}/>
+                    <div className="changeBox">
+                        {filteredSet.map(flash => <div className={`${filteredSet.indexOf(flash) === flashcardIndex ? "active" : "d-none"}`} key={flash.id}><Flashcard size={size} flash={flash} actualFlashCard={actualFlashCard}/></div> )}
+                    </div>
                     <i className="change_next fas fa-chevron-right fa-3x" onClick={handleNextFlashcard}> </i>
                 </div>
             </div>

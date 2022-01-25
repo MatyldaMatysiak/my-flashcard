@@ -12,7 +12,7 @@ export default function Set({files, add, handleEditFlashcard, handleDeleteFlashc
     const [filteredSet, setFilteredSet] = useState([])
     const [searchFlashInput, setSearchFlashInput] = useState("")
     const [tiles, setTiles] = useState(true)
-    const [loader, setLoader] = useState("loading")
+    const [activeFilter, setActiveFilter] = useState("all")
 
     useEffect(() => {
         const newSet = files.filter(function (file) {
@@ -32,10 +32,10 @@ export default function Set({files, add, handleEditFlashcard, handleDeleteFlashc
         setFilterList([...newFiltersList])
         setSet([...newSet]);
         setFilteredSet([...newSet])
-        setLoader("loaded")
     }, [files, field, add, remove])
 
     const handleChooseFilter = (filter) => {
+        console.log(filter)
         // console.log(filter)
         if (filter === "all") {
             setFilteredSet([...set])
@@ -44,8 +44,9 @@ export default function Set({files, add, handleEditFlashcard, handleDeleteFlashc
                 return element.filters.includes(filter);
             });
             setFilteredSet([...newFilteredSet])
-        }
 
+        }
+        setActiveFilter(filter)
     }
 
     const handleSearchFlash = (e, searchFlashInput) => {
@@ -89,12 +90,10 @@ export default function Set({files, add, handleEditFlashcard, handleDeleteFlashc
                     </Link>
                     <h3 className="filterList__title">filters</h3>
                     <ul>
-                        {filtersList.map(filter => <li className="filterElement" key={filter}
+                        {filtersList.map(filter => <li className={`filterElement ${filter === activeFilter ? "active" : ""}`} key={filter}
                                                        onClick={() => handleChooseFilter(filter)}>{filter}</li>)}
                     </ul>
-
                 </div>
-
                 <div className="setPage__main">
                     <div className="main__header">
                         <div className="switch__display">
