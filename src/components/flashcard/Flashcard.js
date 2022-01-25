@@ -7,9 +7,7 @@ export default function Flashcard({question, answer, size, flash, actualFlashCar
 
     useEffect(() => {
         setSide("front")
-    }, [actualFlashCard])
-
-    console.log(side)
+    }, [flash])
 
     const handleChangeSide = () => {
         if (side ==="front") {

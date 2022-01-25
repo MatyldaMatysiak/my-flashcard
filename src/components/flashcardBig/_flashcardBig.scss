@@ -8,7 +8,9 @@
   flex-direction: column;
   color: $color-secondary;
 
-
+  .counter {
+    font-family: $font-text;
+  }
 
   .flashcardBig__editBox {
     display: flex;
@@ -41,13 +43,21 @@
     width: 80%;
 
     .changeBox {
-      .active {
+
+      .changeBox__inner {
+
+      &.active {
         display: block;
       }
 
-      .d-none {
+      &.d-none {
         display: none;
       }
+      }
+
+
+
+
     }
 
     .change__previous,

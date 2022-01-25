@@ -13,6 +13,7 @@ export default function Set({files, add, handleEditFlashcard, handleDeleteFlashc
     const [searchFlashInput, setSearchFlashInput] = useState("")
     const [tiles, setTiles] = useState(true)
     const [activeFilter, setActiveFilter] = useState("all")
+    const [loader, setLoader] = useState("loading")
 
     useEffect(() => {
         const newSet = files.filter(function (file) {
@@ -35,8 +36,6 @@ export default function Set({files, add, handleEditFlashcard, handleDeleteFlashc
     }, [files, field, add, remove])
 
     const handleChooseFilter = (filter) => {
-        console.log(filter)
-        // console.log(filter)
         if (filter === "all") {
             setFilteredSet([...set])
         } else {
@@ -47,20 +46,18 @@ export default function Set({files, add, handleEditFlashcard, handleDeleteFlashc
 
         }
         setActiveFilter(filter)
+        setLoader("loading")
     }
 
     const handleSearchFlash = (e, searchFlashInput) => {
         e.preventDefault();
         const newFilteredSet = [];
 
-        console.log(searchFlashInput)
-
         filteredSet.forEach(flash => {
             if (flash.question.includes(searchFlashInput) || flash.answer.includes(searchFlashInput)) {
                 newFilteredSet.push(flash)
             }
         })
-        console.log(newFilteredSet)
 
         setFilteredSet([...newFilteredSet]);
         setSearchFlashInput("")
@@ -117,10 +114,14 @@ export default function Set({files, add, handleEditFlashcard, handleDeleteFlashc
                     <div className="flashcards">
                         {tiles ? <Tiles filteredSet={filteredSet}/> :
                             <FlashcardBig filteredSet={filteredSet}
+                                          activeFilter={activeFilter}
                                           handleDeleteFlashcard={handleDeleteFlashcard}
                                           handleEditFlashcard={handleEditFlashcard}
                                           setRemove={setRemove}
-                                          remove={remove}/>}
+                                          remove={remove}
+                                          loader={loader}
+                                          setLoader={setLoader}
+                            />}
                     </div>
 
                 </div>

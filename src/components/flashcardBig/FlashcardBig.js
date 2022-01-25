@@ -5,16 +5,19 @@ import {Link} from "react-router-dom";
 import Modal from "../madal/Modal";
 import UpdateFlashcard from "../updateFlashcard/UpdateFlashcard";
 
-export default function FlashcardBig({filteredSet, handleDeleteFlashcard, handleEditFlashcard, remove, setRemove}) {
+export default function FlashcardBig({loader, setLoader, filteredSet, activeFilter, handleDeleteFlashcard, handleEditFlashcard, remove, setRemove}) {
     const [size] = useState("flashcardBig");
     const [actualFlashCard, setActualFlashCard] = useState(filteredSet[0]);
     const [flashcardIndex, setFlashcardIndex] = useState(0);
-    const [modalDisplay, setModalDisplay] = useState("")
+    const [modalDisplay, setModalDisplay] = useState("");
+
+    console.log(flashcardIndex)
 
     useEffect(() => {
-        setActualFlashCard(filteredSet[0])
         setFlashcardIndex(0)
-    }, [filteredSet])
+        setActualFlashCard(filteredSet[0])
+        setLoader("loaded")
+    }, [activeFilter, filteredSet])
 
     const handleNextFlashcard = () => {
         if (flashcardIndex + 1 === filteredSet.length) {
@@ -27,6 +30,7 @@ export default function FlashcardBig({filteredSet, handleDeleteFlashcard, handle
     const handlePreviousFlashcard = () => {
         if (flashcardIndex - 1 === -1) {
         } else {
+
             setFlashcardIndex(index => index - 1);
             setActualFlashCard(filteredSet[flashcardIndex - 1])
         }
@@ -60,9 +64,12 @@ export default function FlashcardBig({filteredSet, handleDeleteFlashcard, handle
                 <div className="flashcardBig__change">
                     <i className="change__previous fas fa-chevron-left fa-3x" onClick={handlePreviousFlashcard}> </i>
                     <div className="changeBox">
-                        {filteredSet.map(flash => <div className={`${filteredSet.indexOf(flash) === flashcardIndex ? "active" : "d-none"}`} key={flash.id}><Flashcard size={size} flash={flash} actualFlashCard={actualFlashCard}/></div> )}
+                        {loader === "loading" ? <div className="changeBox__inner active"><Flashcard size={size} flash={filteredSet[0]}/></div> : <>{filteredSet.map(flash => <div className={`changeBox__inner ${filteredSet.indexOf(flash) === flashcardIndex ? "active" : "d-none"}`} key={flash.id}><Flashcard size={size} flash={flash} actualFlashCard={actualFlashCard}/></div> )}</>}
                     </div>
                     <i className="change_next fas fa-chevron-right fa-3x" onClick={handleNextFlashcard}> </i>
+                </div>
+                <div className="counter">
+                    <p>{flashcardIndex + 1} / {filteredSet.length}</p>
                 </div>
             </div>
             <Modal open={modalDisplay}>
