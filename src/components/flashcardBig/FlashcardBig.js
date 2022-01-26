@@ -4,19 +4,19 @@ import './_flashcardBig.scss';
 import Modal from "../madal/Modal";
 import UpdateFlashcard from "../updateFlashcard/UpdateFlashcard";
 
-export default function FlashcardBig({loader, setLoader, filteredSet, activeFilter, handleDeleteFlashcard, handleEditFlashcard, remove, setRemove}) {
+export default function FlashcardBig({loader, setLoader, filteredSet, handleDeleteFlashcard, handleEditFlashcard, remove, setRemove}) {
     const [size] = useState("flashcardBig");
     const [actualFlashCard, setActualFlashCard] = useState(filteredSet[0]);
     const [flashcardIndex, setFlashcardIndex] = useState(0);
     const [modalDisplay, setModalDisplay] = useState("close");
 
-    console.log(flashcardIndex)
-
     useEffect(() => {
         setFlashcardIndex(0)
         setActualFlashCard(filteredSet[0])
-        setLoader("loaded")
-    }, [activeFilter, filteredSet])
+        if (typeof setLoader === "function") {
+            setLoader("loaded")
+        }
+    }, [filteredSet])
 
     const handleNextFlashcard = () => {
         if (flashcardIndex + 1 === filteredSet.length) {

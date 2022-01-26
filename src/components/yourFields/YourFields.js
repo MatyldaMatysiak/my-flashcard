@@ -4,7 +4,7 @@ import "./_yourFields.scss"
 import Modal from "../madal/Modal";
 import NewFlashcard from "../NewFlashcard/NewFlashcard";
 
-export default function YourFields({files, handleAddFlashcard, setAdd}) {
+export default function YourFields({files, handleAddFlashcard, setAdd, setSearchFiles}) {
     const [sets, setSets] = useState([]);
     const [modalRender, setModalRender] = useState("close")
 
@@ -22,10 +22,14 @@ export default function YourFields({files, handleAddFlashcard, setAdd}) {
         setModalRender("open")
     }
 
+    const resetSearchFiles = () => {
+        setSearchFiles([...files])
+    }
+
     return (
         <div className="sets">
             <div className="setsNavigation">
-                <Link className="setsNavigation__box" to="/all">
+                <Link className="setsNavigation__box" to="/all" onClick={resetSearchFiles}>
                     <h3>All flashcards</h3>
                     <i className="far fa-sticky-note"></i>
                 </Link>

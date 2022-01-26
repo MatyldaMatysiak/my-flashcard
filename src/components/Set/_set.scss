@@ -6,43 +6,6 @@
   justify-content: space-between;
   align-items: start;
 
-  .setPage__main {
-    width: 100%;
-    margin: $spacing-base*3 0;
-
-    .main__header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: $spacing-base*2;
-
-      .switch__display {
-        display: flex;
-      }
-
-      .setName {
-        font-family: $font-text;
-        text-transform: uppercase;
-        color: $color-ligt-grey;
-        font-size: 1.3rem;
-      }
-
-      .btn__oneFlashcard {
-        background-color: $color-secondary;
-        color: $color-white;
-        border: none;
-        text-align: start;
-        border-radius: $spacing-base*0.25;
-        margin: 0 $spacing-base*0.25 ;
-        padding: $spacing-base*0.7 $spacing-base;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    }
-
-  }
-
   .filtersBox {
     background-color: $color-white;
     padding: $spacing-base*2 $spacing-base*2 $spacing-base*5;

@@ -6,14 +6,13 @@ import FlashcardBig from "../flashcardBig/FlashcardBig";
 import Tiles from "../tiles/Tiles";
 import Modal from "../madal/Modal";
 import NewFlashcard from "../NewFlashcard/NewFlashcard";
+import FlashcardView from "../flashcardView/FlashcardView";
 
 export default function Set({files, add, setAdd, handleAddFlashcard, handleEditFlashcard, handleDeleteFlashcard, remove, setRemove}) {
     const {field} = useParams()
     const [set, setSet] = useState([])
     const [filtersList, setFilterList] = useState([])
     const [filteredSet, setFilteredSet] = useState([])
-    const [searchFlashInput, setSearchFlashInput] = useState("")
-    const [tiles, setTiles] = useState(true)
     const [activeFilter, setActiveFilter] = useState("all")
     const [loader, setLoader] = useState("loading")
     // const [hideMenu, setHideMenu] = useState("visible")
@@ -57,28 +56,6 @@ export default function Set({files, add, setAdd, handleAddFlashcard, handleEditF
         setLoader("loading")
     }
 
-    const handleSearchFlash = (e, searchFlashInput) => {
-        e.preventDefault();
-        const newFilteredSet = [];
-
-        filteredSet.forEach(flash => {
-            if (flash.question.includes(searchFlashInput) || flash.answer.includes(searchFlashInput)) {
-                newFilteredSet.push(flash)
-            }
-        })
-
-        setFilteredSet([...newFilteredSet]);
-        setSearchFlashInput("")
-    }
-
-    const handleSwitchToOne = () => {
-        setTiles(false)
-    }
-
-    const handleSwitchToTiles = () => {
-        setTiles(true)
-    }
-
     const handleAdd = () => {
         setModalRender("open")
     }
@@ -107,43 +84,17 @@ export default function Set({files, add, setAdd, handleAddFlashcard, handleEditF
                     {/*    <i className="fas fa-angle-double-left arrow-hide"></i>*/}
                     {/*</div>*/}
                 </div>
-                <div className="setPage__main">
-                    <div className="main__header">
-                        <div className="switch__display">
-                            <button className="btn btn__oneFlashcard" onClick={handleSwitchToOne}>
-                                <i className="fas fa-square"></i>
-                            </button>
-                            <button className="btn btn__oneFlashcard" onClick={handleSwitchToTiles}>
-                                <i className="fas fa-th"></i>
-                            </button>
-                        </div>
-                        <p className="setName">{field}</p>
-                        <form className="searchInSet" onSubmit={(e) => handleSearchFlash(e, searchFlashInput)}>
-                            <label htmlFor="searchFlashcard"/>
-                            <input type="text" id="searchFlashcard" placeholder="find flashcard..."
-                                   value={searchFlashInput} onChange={(e) => setSearchFlashInput(e.target.value)}/>
-                            <button type="submit">
-                                <i className="fas fa-search"></i>
-                            </button>
-                        </form>
-                    </div>
-
-                    <div className="flashcards">
-                        {tiles ? <Tiles filteredSet={filteredSet}/> :
-                            <FlashcardBig filteredSet={filteredSet}
-                                          activeFilter={activeFilter}
-                                          handleDeleteFlashcard={handleDeleteFlashcard}
-                                          handleEditFlashcard={handleEditFlashcard}
-                                          setRemove={setRemove}
-                                          remove={remove}
-                                          loader={loader}
-                                          setLoader={setLoader}
-                            />}
-                    </div>
-
-                </div>
+                <FlashcardView field={field}
+                               filteredSet={filteredSet}
+                               setFilteredSet={setFilteredSet}
+                               handleEditFlashcard={handleEditFlashcard}
+                               handleDeleteFlashcard={handleDeleteFlashcard}
+                               remove={remove}
+                               setRemove={setRemove}
+                               loader={loader}
+                               setLoader={setLoader}
+                />
             </div>
         </>
-
     )
 }

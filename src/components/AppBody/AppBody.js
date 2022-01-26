@@ -7,7 +7,7 @@ import {db} from "../../firebaseConfig";
 import {addDoc, collection, getDocs, deleteDoc, doc, updateDoc} from "firebase/firestore";
 import YourFields from "../yourFields/YourFields";
 import Set from "../Set/Set";
-import FlashcardBig from "../flashcardBig/FlashcardBig";
+import FlashcardView from "../flashcardView/FlashcardView";
 
 export default function AppBody() {
     const colRef = collection(db, 'flashcards');
@@ -17,7 +17,7 @@ export default function AppBody() {
     const [add, setAdd] = useState(false)
     const [remove, setRemove] = useState(false)
     const [files, setFiles] = useState([]);
-    const [setBig, setSetBig] = useState([])
+    const [searchFiles, setSearchFiles] = useState(files)
 
 
     useEffect(() => {
@@ -29,6 +29,7 @@ export default function AppBody() {
                     flashcards.push({...doc.data(), id: doc.id})
                 })
                 setFiles([...flashcards])
+                setSearchFiles([...flashcards])
             }).catch(err => console.log(err.message))
 
     }, [add, remove])
@@ -68,12 +69,12 @@ export default function AppBody() {
                         <YourFields files={files}
                                     handleAddFlashcard={handleAddFlashcard}
                                     setAdd={setAdd}
+                                    setSearchFiles={setSearchFiles}
                         />
                     </Route>
                     <Route exact path="/sets/:field">
                         <Set files={files}
                              add={add}
-                             setSetBig={setSetBig}
                              handleDeleteFlashcard={handleDeleteFlashcard}
                              handleEditFlashcard={handleEditFlashcard}
                              remove={remove}
@@ -83,7 +84,13 @@ export default function AppBody() {
                         />
                     </Route>
                     <Route exact path="/all">
-                        {/*<FlashcardBig setBig={files}/>*/}
+                        <FlashcardView filteredSet={searchFiles}
+                                       setFilteredSet={setSearchFiles}
+                                       handleDeleteFlashcard={handleDeleteFlashcard}
+                                       handleEditFlashcard={handleEditFlashcard}
+                                       remove={remove}
+                                       setRemove={setRemove}
+                        />
                     </Route>
                 </Switch>
             </div>
