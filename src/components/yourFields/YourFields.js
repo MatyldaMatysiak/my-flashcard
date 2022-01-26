@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import "./_yourFields.scss"
 
-export default function YourFields({files}) {
+export default function YourFields({files, setSetNumber}) {
     const [sets, setSets] = useState([]);
 
     useEffect(() => {

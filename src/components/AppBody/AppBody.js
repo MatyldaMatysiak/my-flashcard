@@ -12,6 +12,8 @@ import FlashcardBig from "../flashcardBig/FlashcardBig";
 export default function AppBody() {
     const colRef = collection(db, 'flashcards');
 
+
+
     const [add, setAdd] = useState(false)
     const [remove, setRemove] = useState(false)
     const [files, setFiles] = useState([]);
@@ -51,7 +53,7 @@ export default function AppBody() {
             <div className="container">
                 <Switch>
                     <Route exact path="/">
-                        <HomePage/>
+                        <HomePage files={files}/>
                     </Route>
                     <Route exact path="/add">
                         <NewFlashcard handleAddFlashcard={handleAddFlashcard}

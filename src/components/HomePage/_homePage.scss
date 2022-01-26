@@ -3,35 +3,67 @@
 
 .homepage {
   display: flex;
-  justify-content: center;
+  flex-direction: column-reverse;
   align-items: center;
-  color: $color-white;
-  padding: 5% 0;
+  padding: 5%;
 
-  .optionBox {
-    cursor: pointer;
-    width: 40%;
-    text-align: center;
-    background-color: $color-secondary;
-    padding: 7% 2%;
-    border-radius: $spacing-base;
-    font-family: $font-text;
-    font-weight: 700;
-    font-size: 3rem;
-    box-shadow: 0px 8px 24px 0px rgba(7, 2, 39, 0.4);
-    color: $color-white;
+  .flashcardInfo {
+    width: 70%;
 
-    &:hover {
-      background-color: #3b7be3;
+    .flashcardInfo__box {
+      background-color: $color-white;
+      padding: $spacing-base*2;
+      font-family: $font-text;
+      font-size: 1.5rem;
+      border-radius: $spacing-base*0.5;
+      color: $color-text;
+      box-shadow: $box-shadow-base;
+      text-align: center;
+
+      &:not(:last-child) {
+        margin-bottom: $spacing-base*2;
+      }
     }
-
-    p {
-      text-transform: uppercase;
-    }
-
-    &:last-child{
-      margin-left: $spacing-base*5;
-    }
-
   }
+
+  .homeMenu {
+    display: flex;
+    width: 70%;
+
+
+    .optionBox {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      width: 100%;
+      text-align: center;
+      background-color: $color-secondary;
+      padding: 7% 2%;
+      border-radius: $spacing-base*0.5;
+      font-family: $font-text;
+      font-weight: 700;
+      font-size: 2rem;
+      box-shadow: 0px 8px 24px 0px rgba(7, 2, 39, 0.4);
+      color: $color-white;
+      margin-bottom: $spacing-base*4;
+
+      &:hover {
+        background-color: #3b7be3;
+      }
+
+      .option__yourFlashcards,
+      .option__newFlashcard {
+        text-transform: uppercase;
+        margin-bottom: $spacing-base*2;
+      }
+
+      &:not(:last-child) {
+        margin-right: $spacing-base*4;
+      }
+
+    }
+  }
+
+
 }
