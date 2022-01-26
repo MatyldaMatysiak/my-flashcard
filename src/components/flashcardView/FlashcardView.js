@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './_flashkardView.scss';
 import Tiles from "../tiles/Tiles";
 import FlashcardBig from "../flashcardBig/FlashcardBig";
@@ -12,6 +12,11 @@ export default function FlashcardView({field, filteredSet, setFilteredSet, handl
     const [searchSet, setSearchSet] = useState("none")
     console.log(searchSet)
     console.log(filteredSet)
+
+    useEffect(() => {
+        setSearchSet(filteredSet)
+        setActiveFilterBox("")
+    }, [filteredSet])
 
     const handleSwitchToOne = () => {
         setTiles(false)
@@ -69,8 +74,7 @@ export default function FlashcardView({field, filteredSet, setFilteredSet, handl
                     </button>
                 </form>
             </div>
-
-            <div className="flashcards">
+            {searchSet.length === 0 ? <></> : <div className="flashcards">
                 {tiles ? <Tiles filteredSet={searchSet === "none" ? filteredSet : searchSet}/> :
                     <FlashcardBig filteredSet={searchSet === "none" ? filteredSet : searchSet}
                                   handleDeleteFlashcard={handleDeleteFlashcard}
@@ -80,7 +84,8 @@ export default function FlashcardView({field, filteredSet, setFilteredSet, handl
                                   loader={loader}
                                   setLoader={setLoader}
                     />}
-            </div>
+            </div>}
+
 
         </div>
     )

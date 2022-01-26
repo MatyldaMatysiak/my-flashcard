@@ -18,9 +18,6 @@ export default function Set({files, add, setAdd, handleAddFlashcard, handleEditF
     // const [hideMenu, setHideMenu] = useState("visible")
     const [modalRender, setModalRender] = useState("close")
 
-    console.log(filtersList)
-    // console.log(filteredSet)
-
     useEffect(() => {
         const newSet = files.filter(function (file) {
             return file.field === field;

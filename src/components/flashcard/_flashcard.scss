@@ -72,6 +72,10 @@
       border-radius: $spacing-base;
       min-width: 450px;
       min-height: 300px;
+
+      .flashcard__text {
+        font-size: 2rem;
+      }
     }
   }
 }
