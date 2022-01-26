@@ -1,9 +1,8 @@
 import React, {useState} from "react";
 import './_newFlashcard.scss'
-import {Link} from "react-router-dom";
 
-export default function NewFlashcard({handleAddFlashcard, setAdd, add}) {
-    const [field, setField] = useState("");
+export default function NewFlashcard({handleAddFlashcard, setModalDisplay, isField, setAdd, add}) {
+    const [field, setField] = useState(isField === "undefined" ? "" : isField);
     const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
     const [filters, setFilters] = useState([]);
@@ -24,6 +23,11 @@ export default function NewFlashcard({handleAddFlashcard, setAdd, add}) {
         }
         handleAddFlashcard(newFlashcard);
         setAdd(!add)
+        setModalDisplay("close")
+    }
+
+    const handleCancelAdd = () => {
+        setModalDisplay("close")
     }
 
     return (
@@ -75,8 +79,8 @@ export default function NewFlashcard({handleAddFlashcard, setAdd, add}) {
                 </div>
             </section>
             <div className="buttonBox">
-                <Link className="btn btn__submit" to="/" onClick={addNewFlashcard}>Add</Link>
-                <Link className="btn btn__cancel" to="/">Cancel</Link>
+                <button type="submit" className="btn btn__submit" onClick={addNewFlashcard}>Add</button>
+                <button type="button" className="btn btn__cancel" onClick={handleCancelAdd}>Cancel</button>
             </div>
         </form>
     )

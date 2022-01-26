@@ -86,8 +86,8 @@ export default function UpdateFlashcard({flash, setModalDisplay, handleEditFlash
                 </div>
             </section>
             <div className="buttonBox">
-                <button className="btn btn__submit" onClick={updateFlashcard}>Update</button>
-                <button className="btn btn__cancel" onClick={handleCancelUpdate}>Cancel</button>
+                <button type="submit" className="btn btn__submit" onClick={updateFlashcard}>Update</button>
+                <button type="button" className="btn btn__cancel" onClick={handleCancelUpdate}>Cancel</button>
             </div>
         </form>
     )

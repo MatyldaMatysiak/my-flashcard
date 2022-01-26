@@ -1,7 +1,7 @@
 @import '../../basic_scss/variables';
 
 .modal {
-  display: none; /* Hidden by default */
+  //display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
@@ -14,6 +14,6 @@
   padding-top: $spacing-base*10;
 }
 
-.open {
-  display: block;
-}
+//.open {
+//  display: block;
+//}

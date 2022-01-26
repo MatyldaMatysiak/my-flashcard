@@ -4,8 +4,10 @@ import './_set.scss';
 import {Link} from "react-router-dom";
 import FlashcardBig from "../flashcardBig/FlashcardBig";
 import Tiles from "../tiles/Tiles";
+import Modal from "../madal/Modal";
+import NewFlashcard from "../NewFlashcard/NewFlashcard";
 
-export default function Set({files, add, handleEditFlashcard, handleDeleteFlashcard, remove, setRemove}) {
+export default function Set({files, add, setAdd, handleAddFlashcard, handleEditFlashcard, handleDeleteFlashcard, remove, setRemove}) {
     const {field} = useParams()
     const [set, setSet] = useState([])
     const [filtersList, setFilterList] = useState([])
@@ -14,7 +16,8 @@ export default function Set({files, add, handleEditFlashcard, handleDeleteFlashc
     const [tiles, setTiles] = useState(true)
     const [activeFilter, setActiveFilter] = useState("all")
     const [loader, setLoader] = useState("loading")
-    const [hideMenu, setHideMenu] = useState("visible")
+    // const [hideMenu, setHideMenu] = useState("visible")
+    const [modalRender, setModalRender] = useState("close")
 
     console.log(filtersList)
     // console.log(filteredSet)
@@ -76,14 +79,19 @@ export default function Set({files, add, handleEditFlashcard, handleDeleteFlashc
         setTiles(true)
     }
 
+    const handleAdd = () => {
+        setModalRender("open")
+    }
+
     return (
         <>
             <div className="setPage">
                 <div className="filtersBox">
-                    <button className="btn__add">
+                    <button className="btn__add" onClick={handleAdd}>
                         <i className="fas fa-plus"></i>
                         <p>Add flashcard</p>
                     </button>
+                    {modalRender === "open" ? <Modal><NewFlashcard setModalDisplay={setModalRender} handleAddFlashcard={handleAddFlashcard} setAdd={setAdd} isField={field}/></Modal> : <></>}
                     <Link to="/sets">
                         <button className="btn__back">
                             <i className="fas fa-arrow-left"></i>

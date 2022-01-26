@@ -53,15 +53,22 @@ export default function AppBody() {
             <div className="container">
                 <Switch>
                     <Route exact path="/">
-                        <HomePage files={files}/>
+                        <HomePage files={files}
+                                  handleAddFlashcard={handleAddFlashcard}
+                                  setAdd={setAdd}
+                        />
                     </Route>
                     <Route exact path="/add">
                         <NewFlashcard handleAddFlashcard={handleAddFlashcard}
                                       setAdd={setAdd}
-                                      add={add}/>
+                                      add={add}
+                        />
                     </Route>
                     <Route exact path="/sets">
-                        <YourFields files={files}/>
+                        <YourFields files={files}
+                                    handleAddFlashcard={handleAddFlashcard}
+                                    setAdd={setAdd}
+                        />
                     </Route>
                     <Route exact path="/sets/:field">
                         <Set files={files}
@@ -71,6 +78,8 @@ export default function AppBody() {
                              handleEditFlashcard={handleEditFlashcard}
                              remove={remove}
                              setRemove={setRemove}
+                             handleAddFlashcard={handleAddFlashcard}
+                             setAdd={setAdd}
                         />
                     </Route>
                     <Route exact path="/all">

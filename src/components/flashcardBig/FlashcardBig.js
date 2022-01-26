@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import Flashcard from "../flashcard/Flashcard";
 import './_flashcardBig.scss';
-import {Link} from "react-router-dom";
 import Modal from "../madal/Modal";
 import UpdateFlashcard from "../updateFlashcard/UpdateFlashcard";
 
@@ -9,7 +8,7 @@ export default function FlashcardBig({loader, setLoader, filteredSet, activeFilt
     const [size] = useState("flashcardBig");
     const [actualFlashCard, setActualFlashCard] = useState(filteredSet[0]);
     const [flashcardIndex, setFlashcardIndex] = useState(0);
-    const [modalDisplay, setModalDisplay] = useState("");
+    const [modalDisplay, setModalDisplay] = useState("close");
 
     console.log(flashcardIndex)
 
@@ -72,9 +71,13 @@ export default function FlashcardBig({loader, setLoader, filteredSet, activeFilt
                     <p>{flashcardIndex + 1} / {filteredSet.length}</p>
                 </div>
             </div>
-            <Modal open={modalDisplay}>
+            {modalDisplay === "open" ? <Modal>
                 <UpdateFlashcard flash={actualFlashCard} setModalDisplay={setModalDisplay} handleEditFlashcard={handleEditFlashcard}/>
-            </Modal>
+            </Modal> : <></>}
+
+            {/*<Modal open={modalDisplay}>*/}
+            {/*    <UpdateFlashcard flash={actualFlashCard} setModalDisplay={setModalDisplay} handleEditFlashcard={handleEditFlashcard}/>*/}
+            {/*</Modal>*/}
         </>
     )
 }
