@@ -109,6 +109,7 @@ export default function Set({files, add, handleEditFlashcard, handleDeleteFlashc
                                 <i className="fas fa-th"></i>
                             </button>
                         </div>
+                        <p className="setName">{field}</p>
                         <form className="searchInSet" onSubmit={(e) => handleSearchFlash(e, searchFlashInput)}>
                             <label htmlFor="searchFlashcard"/>
                             <input type="text" id="searchFlashcard" placeholder="find flashcard..."

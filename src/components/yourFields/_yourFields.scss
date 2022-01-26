@@ -3,64 +3,90 @@
 
 .sets {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-around;
   padding: 5% 0;
   font-family: $font-text;
   color: $color-text;
 
   .setsNavigation {
-    width: 100%;
+    width: 30%;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
 
     .setsNavigation__box {
-      background-color: $color-white;
+      background-color: $color-secondary;
+      color: $color-white;
       cursor: pointer;
-      width: 22%;
-      border-radius: $spacing-base;
-      padding: 6% 2%;
+      width: 70%;
+      border-radius: $spacing-base*0.5;
+      padding: 13% 2%;
       text-align: center;
-      box-shadow: 0 8px 24px 0 rgba(7, 2, 39, 0.4);
-
-    }
-  }
-
-  .setsHeader {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    align-items: center;
-    margin: 4% 0;
-    color: $color-ligt-grey;
-
-    h2 {
+      box-shadow: $box-shadow-base;
+      margin: $spacing-base*2;
       text-transform: uppercase;
+      font-weight: 700;
+      font-size: 1.5rem;
+
+      h3 {
+        margin-bottom: $spacing-base;
+      }
+
+
     }
 
-    .setsHeader__line {
-      background-color: $color-ligt-grey;
-      width: 35%;
-      height: 1px;
+    .setsNavigation__back {
+      background-color: $color-white;
+      color: $color-secondary;
+      border: 2px solid $color-secondary;
+      padding: 8% 2%;;
     }
-
   }
 
-  .setsContainer {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+  .setsMain {
+    width: 70%;
 
-    .setBox {
-      background-color: $color-white;
-      cursor: pointer;
-      width: 22%;
-      border-radius: $spacing-base;
-      padding: 6% 2%;
-      text-align: center;
-      box-shadow: 0 8px 24px 0 rgba(7, 2, 39, 0.4);
-      margin: 3%;
+    .setsHeader {
+      display: flex;
+      width: 70%;
+      justify-content: space-around;
+      align-items: center;
+      margin: 4% auto;
+      color: $color-ligt-grey;
+
+      h2 {
+        text-transform: uppercase;
+      }
+
+      .setsHeader__line {
+        background-color: $color-ligt-grey;
+        width: 35%;
+        height: 1px;
+      }
+
+    }
+
+    .setsContainer {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-wrap: wrap;
+
+      .setBox {
+        background-color: $color-white;
+        cursor: pointer;
+        width: 60%;
+        border-radius: $spacing-base*0.5;
+        padding: 3% 2%;
+        text-align: center;
+        box-shadow: $box-shadow-base;
+        margin: $spacing-base;
+
+        p {
+          text-transform: uppercase;
+        }
+      }
     }
   }
 }
