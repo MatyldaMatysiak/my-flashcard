@@ -14,14 +14,19 @@ export default function Set({files, add, handleEditFlashcard, handleDeleteFlashc
     const [tiles, setTiles] = useState(true)
     const [activeFilter, setActiveFilter] = useState("all")
     const [loader, setLoader] = useState("loading")
+    const [hideMenu, setHideMenu] = useState("visible")
+
+    console.log(filtersList)
+    // console.log(filteredSet)
 
     useEffect(() => {
         const newSet = files.filter(function (file) {
             return file.field === field;
         });
-
-        let newFiltersList = ["all"];
+        console.log(newSet)
+        let newFiltersList = [];
         newSet.forEach(list => {
+
             list.filters.forEach(filter => {
                 if (!newFiltersList.includes(filter)) {
                     newFiltersList.push(filter)
@@ -30,10 +35,10 @@ export default function Set({files, add, handleEditFlashcard, handleDeleteFlashc
 
         })
 
-        setFilterList([...newFiltersList])
+        setFilterList(["all", ...newFiltersList.sort()])
         setSet([...newSet]);
         setFilteredSet([...newSet])
-    }, [files, field, add, remove])
+    }, [files, add, remove])
 
     const handleChooseFilter = (filter) => {
         if (filter === "all") {
@@ -90,6 +95,9 @@ export default function Set({files, add, handleEditFlashcard, handleDeleteFlashc
                         {filtersList.map(filter => <li className={`filterElement ${filter === activeFilter ? "active" : ""}`} key={filter}
                                                        onClick={() => handleChooseFilter(filter)}>{filter}</li>)}
                     </ul>
+                    {/*<div className="hideMenu">*/}
+                    {/*    <i className="fas fa-angle-double-left arrow-hide"></i>*/}
+                    {/*</div>*/}
                 </div>
                 <div className="setPage__main">
                     <div className="main__header">

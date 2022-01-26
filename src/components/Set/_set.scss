@@ -41,6 +41,8 @@
     box-shadow: $box-shadow-base;
     width: 23%;
     margin-right: $spacing-base*3;
+    position: relative;
+    //display: none;
 
 
     .btn__add,
@@ -88,6 +90,20 @@
       }
 
 
+    }
+
+    .hideMenu {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      color: $color-text;
+      cursor: pointer;
+      font-family: $font-text;
+      font-size: 1.5rem;
+      padding: $spacing-base*0.5 $spacing-base;
+
+      .arrow-hide {
+      }
     }
   }
 
