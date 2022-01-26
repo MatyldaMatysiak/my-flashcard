@@ -7,6 +7,11 @@ export default function FlashcardView({field, filteredSet, setFilteredSet, handl
     const [tiles, setTiles] = useState(true)
     const [searchFlashInput, setSearchFlashInput] = useState("")
     const [search, setSearch] = useState("")
+    const [activeFilterBox, setActiveFilterBox,] = useState("")
+    const [activeSearch, setActiveSearch] = useState("")
+    const [searchSet, setSearchSet] = useState("none")
+    console.log(searchSet)
+    console.log(filteredSet)
 
     const handleSwitchToOne = () => {
         setTiles(false)
@@ -28,8 +33,15 @@ export default function FlashcardView({field, filteredSet, setFilteredSet, handl
             }
         })
 
-        setFilteredSet([...newFilteredSet]);
+        setSearchSet([...newFilteredSet]);
+        setActiveSearch(searchFlashInput);
+        setActiveFilterBox("open");
         setSearchFlashInput("")
+    }
+
+    const handleCloseSearchFilter = () => {
+        setActiveFilterBox("");
+        setSearchSet(filteredSet)
     }
 
     return (
@@ -42,6 +54,10 @@ export default function FlashcardView({field, filteredSet, setFilteredSet, handl
                     <button className="btn btn__oneFlashcard" onClick={handleSwitchToTiles}>
                         <i className="fas fa-th"></i>
                     </button>
+                    <div className={`closeFilterBox ${activeFilterBox}`}>
+                        <p className="activeFilter">{activeSearch}</p>
+                        <i className="fas fa-times closeActiveFilter" onClick={handleCloseSearchFilter}></i>
+                    </div>
                 </div>
                 <p className="setName">{field}</p>
                 <form className={`searchInSet ${search}`} onSubmit={(e) => handleSearchFlash(e, searchFlashInput)}>
@@ -55,8 +71,8 @@ export default function FlashcardView({field, filteredSet, setFilteredSet, handl
             </div>
 
             <div className="flashcards">
-                {tiles ? <Tiles filteredSet={filteredSet}/> :
-                    <FlashcardBig filteredSet={filteredSet}
+                {tiles ? <Tiles filteredSet={searchSet === "none" ? filteredSet : searchSet}/> :
+                    <FlashcardBig filteredSet={searchSet === "none" ? filteredSet : searchSet}
                                   handleDeleteFlashcard={handleDeleteFlashcard}
                                   handleEditFlashcard={handleEditFlashcard}
                                   setRemove={setRemove}

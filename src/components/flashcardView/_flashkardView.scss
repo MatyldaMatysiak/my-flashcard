@@ -15,6 +15,30 @@
       display: flex;
     }
 
+    .closeFilterBox {
+      display: none;
+      background-color: $color-white;
+      align-items: center;
+      padding: $spacing-base*0.5 $spacing-base;
+      border: 1px solid $color-ligt-grey;
+      border-radius: $spacing-base*0.25;
+      margin-left: $spacing-base;
+
+      .activeFilter {
+        font-family: $font-text;
+        font-size: 1rem;
+        margin-right: $spacing-base;
+      }
+
+      .closeActiveFilter {
+        cursor: pointer;
+      }
+
+      &.open {
+        display: flex;
+      }
+    }
+
     .setName {
       font-family: $font-text;
       text-transform: uppercase;
