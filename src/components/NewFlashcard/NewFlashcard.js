@@ -23,7 +23,6 @@ export default function NewFlashcard({handleAddFlashcard, setModalDisplay, isFie
             status: "learning"
         }
         handleAddFlashcard(newFlashcard);
-        setAdd(!add)
         setModalDisplay("close")
     }
 

@@ -37,7 +37,6 @@ export default function FlashcardBig({loader, setLoader, filteredSet, handleDele
 
     const deleteFlashcard = () => {
         handleDeleteFlashcard(actualFlashCard.id);
-        setRemove(!remove)
     }
 
     const handleEdit = () => {

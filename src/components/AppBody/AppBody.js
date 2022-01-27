@@ -34,11 +34,13 @@ export default function AppBody() {
 
     const handleAddFlashcard = (flashcard) => {
         addDoc(colRef, flashcard).catch(() => {})
+        setAdd(!add)
     }
 
     const handleDeleteFlashcard = (flashcardId) => {
         const docRef = doc(db, "flashcards", flashcardId);
         deleteDoc(docRef).catch(() => {});
+        setRemove(!remove)
     }
 
     const handleEditFlashcard = (flashcardId, flashcard) => {

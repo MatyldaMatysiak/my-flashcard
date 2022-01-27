@@ -34,6 +34,7 @@ export default function Set({files, add, setAdd, handleAddFlashcard, handleEditF
         setFilterList(["all", ...newFiltersList.sort()])
         setSet([...newSet]);
         setFilteredSet([...newSet])
+        setActiveFilter("all")
     }, [files, add, remove])
 
     const handleChooseFilter = (filter) => {
