@@ -3,19 +3,19 @@ import './_flashkardView.scss';
 import Tiles from "../tiles/Tiles";
 import FlashcardBig from "../flashcardBig/FlashcardBig";
 
-export default function FlashcardView({field, filteredSet, setFilteredSet, handleDeleteFlashcard, handleEditFlashcard, setRemove, remove, loader, setLoader}) {
+export default function FlashcardView({field, filteredSet, setFilteredSet, handleDeleteFlashcard, handleEditFlashcard, setRemove, remove}) {
     const [tiles, setTiles] = useState(true)
     const [searchFlashInput, setSearchFlashInput] = useState("")
     const [search, setSearch] = useState("")
     const [activeFilterBox, setActiveFilterBox,] = useState("")
     const [activeSearch, setActiveSearch] = useState("")
     const [searchSet, setSearchSet] = useState("none")
-    console.log(searchSet)
-    console.log(filteredSet)
+    const [loader, setLoader] = useState("loading")
 
     useEffect(() => {
         setSearchSet(filteredSet)
         setActiveFilterBox("")
+        setLoader("loading")
     }, [filteredSet])
 
     const handleSwitchToOne = () => {
@@ -81,8 +81,8 @@ export default function FlashcardView({field, filteredSet, setFilteredSet, handl
                                   handleEditFlashcard={handleEditFlashcard}
                                   setRemove={setRemove}
                                   remove={remove}
-                                  loader={loader}
-                                  setLoader={setLoader}
+                                  loader2={loader}
+                                  setLoader2={setLoader}
                     />}
             </div>}
 

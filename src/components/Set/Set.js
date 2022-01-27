@@ -2,8 +2,6 @@ import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import './_set.scss';
 import {Link} from "react-router-dom";
-import FlashcardBig from "../flashcardBig/FlashcardBig";
-import Tiles from "../tiles/Tiles";
 import Modal from "../madal/Modal";
 import NewFlashcard from "../NewFlashcard/NewFlashcard";
 import FlashcardView from "../flashcardView/FlashcardView";
@@ -14,7 +12,6 @@ export default function Set({files, add, setAdd, handleAddFlashcard, handleEditF
     const [filtersList, setFilterList] = useState([])
     const [filteredSet, setFilteredSet] = useState([])
     const [activeFilter, setActiveFilter] = useState("all")
-    const [loader, setLoader] = useState("loading")
     // const [hideMenu, setHideMenu] = useState("visible")
     const [modalRender, setModalRender] = useState("close")
 
@@ -50,7 +47,7 @@ export default function Set({files, add, setAdd, handleAddFlashcard, handleEditF
 
         }
         setActiveFilter(filter)
-        setLoader("loading")
+
     }
 
     const handleAdd = () => {
@@ -88,8 +85,6 @@ export default function Set({files, add, setAdd, handleAddFlashcard, handleEditF
                                handleDeleteFlashcard={handleDeleteFlashcard}
                                remove={remove}
                                setRemove={setRemove}
-                               loader={loader}
-                               setLoader={setLoader}
                 />
             </div>
         </>

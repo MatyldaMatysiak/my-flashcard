@@ -12,8 +12,6 @@ import FlashcardView from "../flashcardView/FlashcardView";
 export default function AppBody() {
     const colRef = collection(db, 'flashcards');
 
-
-
     const [add, setAdd] = useState(false)
     const [remove, setRemove] = useState(false)
     const [files, setFiles] = useState([]);
