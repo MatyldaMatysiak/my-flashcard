@@ -1,5 +1,6 @@
 @import '../../basic_scss/colors';
 @import '../../basic_scss/variables';
+@import '../../basic_scss/mixins';
 
 .flashcardBig__container {
   margin: $spacing-base*5 0;
@@ -41,6 +42,10 @@
     align-items: center;
     justify-content: center;
     width: 80%;
+
+    @include tabletPortrait {
+      width: 95%;
+    }
 
     .changeBox {
 

@@ -1,9 +1,10 @@
 @import '../../basic_scss/colors';
 @import '../../basic_scss/variables';
+@import '../../basic_scss/mixins';
 
 .flashcardBox {
   display: block;
-  width: 20%;
+  width: 40%;
   min-width: 250px;
   min-height: 150px;
   perspective: 1000px;
@@ -58,6 +59,16 @@
   min-width: 450px;
   min-height: 300px;
 
+  @include tabletPortrait {
+    width: 70%;
+    min-width: 200px;
+    min-height: 200px;
+  }
+
+  @include mobile {
+    min-width: 200px;
+  }
+
   .d-none {
     display: none;
   }
@@ -67,14 +78,39 @@
     min-width: 450px;
     min-height: 300px;
 
+    @include tabletPortrait {
+      width: 70%;
+      min-width: 200px;
+      min-height: 200px;
+    }
+
+    @include mobile {
+      min-width: 200px;
+    }
+
     .flashcard__front,
     .flashcard__back {
       border-radius: $spacing-base;
       min-width: 450px;
       min-height: 300px;
 
+      @include tabletPortrait {
+        width: 70%;
+        min-width: 200px;
+        min-height: 200px;
+
+      }
+
+      @include mobile {
+        min-width: 200px;
+      }
+
       .flashcard__text {
         font-size: 2rem;
+
+        @include tabletPortrait {
+          font-size: 1.5rem;
+        }
       }
     }
   }

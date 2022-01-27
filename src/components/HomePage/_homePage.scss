@@ -1,5 +1,6 @@
 @import '../../basic_scss/colors';
 @import '../../basic_scss/variables';
+@import '../../basic_scss/mixins';
 
 .homepage {
   display: flex;
@@ -9,6 +10,14 @@
 
   .flashcardInfo {
     width: 70%;
+
+    @include tablet {
+      width: 80%;
+    }
+
+    @include tabletPortrait {
+      width: 90%;
+    }
 
     .flashcardInfo__box {
       background-color: $color-white;
@@ -29,6 +38,18 @@
   .homeMenu {
     display: flex;
     width: 70%;
+
+    @include tablet {
+      width: 80%;
+    }
+
+    @include tabletPortrait {
+      width: 90%;
+    }
+
+    @include mobile {
+      flex-direction: column;
+    }
 
 
     .optionBox {

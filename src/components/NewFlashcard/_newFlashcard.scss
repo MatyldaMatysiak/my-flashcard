@@ -1,5 +1,6 @@
 @import '../../basic_scss/colors';
 @import '../../basic_scss/variables';
+@import '../../basic_scss/mixins';
 
 .newFlashAddForm {
   display: flex;
@@ -12,6 +13,11 @@
   padding: 5%;
   font-family: $font-text;
 
+  @include tabletPortrait {
+    width: 80%;
+  }
+
+
   input,
   textarea {
     font-family: $font-text;
@@ -23,11 +29,22 @@
     display: flex;
     margin-bottom: $spacing-base*2;
 
+    @include mobile {
+      flex-direction: column;
+      align-items: center;
+    }
+
     .flashcardInfo__basic {
       width: 60%;
       margin-right: 5%;
       //border-right: 1px solid grey;
       padding-right: 5%;
+
+      @include mobile {
+        width: 85%;
+        margin-right: 0;
+        padding-right: 0;
+      }
 
       .field {
         display: flex;
@@ -56,6 +73,10 @@
 
     .flashcardInfo__filters {
       width: 35%;
+
+      @include mobile {
+        width: 85%;
+      }
 
       .filters__adding {
         display: flex;
@@ -114,6 +135,14 @@
       font-weight: 700;
       text-align: center;
       color: $color-white;
+
+      @include tabletPortrait {
+        width: 30%;
+      }
+
+      @include mobile {
+        width: 45%;
+      }
     }
     .btn__submit {
       margin-right: $spacing-base*2;

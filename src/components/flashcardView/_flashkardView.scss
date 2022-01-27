@@ -1,5 +1,6 @@
 @import '../../basic_scss/colors';
 @import '../../basic_scss/variables';
+@import '../../basic_scss/mixins';
 
 .setPage__main {
   width: 100%;
@@ -11,8 +12,31 @@
     align-items: center;
     margin-bottom: $spacing-base*2;
 
+    @include tabletPortrait {
+      flex-direction: column-reverse;
+    }
+
     .switch__display {
       display: flex;
+    }
+
+    .searchInSet {
+      display: flex;
+
+      #searchFlashcard {
+        border: 1px solid $color-ligt-grey;
+        color: $color-ligt-grey;
+        padding-left: $spacing-base*0.5;
+      }
+
+      button {
+        display: flex;
+        align-items: center;
+        border: none;
+        background-color: $color-secondary;
+        color: $color-white;
+        padding: $spacing-base*0.5;
+      }
     }
 
     .closeFilterBox {
@@ -44,6 +68,10 @@
       text-transform: uppercase;
       color: $color-ligt-grey;
       font-size: 1.3rem;
+
+      @include tabletPortrait {
+        margin-bottom: $spacing-base;
+      }
     }
 
     .btn__oneFlashcard {
@@ -60,6 +88,10 @@
     }
 
     .searchInSet {
+
+      @include tabletPortrait {
+        margin-bottom: $spacing-base;
+      }
 
       &.hidden {
         visibility: hidden;

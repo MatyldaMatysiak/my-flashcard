@@ -1,10 +1,16 @@
 @import '../../basic_scss/colors';
 @import '../../basic_scss/variables';
+@import '../../basic_scss/mixins';
 
 .setPage {
   display: flex;
   justify-content: space-between;
   align-items: start;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: center;
+  }
 
   .filtersBox {
     background-color: $color-white;
@@ -13,7 +19,13 @@
     width: 23%;
     margin-right: $spacing-base*3;
     position: relative;
+    min-width: 200px;
     //display: none;
+
+    @include mobile {
+      margin: 0;
+      width: 80%;
+    }
 
 
     .btn__add,

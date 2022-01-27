@@ -1,6 +1,16 @@
+@import '../../basic_scss/mixins';
 
 .tiles__container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
+
+  @include tablet {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include tabletPortrait {
+    grid-template-columns: 1fr;
+  }
+
 }

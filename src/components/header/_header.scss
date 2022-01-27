@@ -1,5 +1,6 @@
 @import '../../basic_scss/colors';
 @import '../../basic_scss/variables';
+@import '../../basic_scss/mixins';
 
 header {
   background-color: $color-primary;
@@ -25,9 +26,15 @@ header {
     display: flex;
     align-items: center;
 
+
+
     .user__name {
       font-family: $font-text;
       margin-right: $spacing-base;
+
+      @include mobile {
+        display: none;
+      }
     }
     .user__image {
       width: 2.5rem;
