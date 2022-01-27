@@ -51,11 +51,11 @@ export default function FlashcardBig({loader, setLoader, filteredSet, handleDele
                     <button className="btn btn-edit" onClick={handleEdit}>
                         <i className="fas fa-edit" ></i>
                     </button>
-                    <button className="btn btn-changeDisplay">
-                        <p>question</p>
-                        <i className="fas fa-exchange-alt changeDisplay-icon"></i>
-                        <p>answer</p>
-                    </button>
+                    {/*<button className="btn btn-changeDisplay">*/}
+                    {/*    <p>question</p>*/}
+                    {/*    <i className="fas fa-exchange-alt changeDisplay-icon"></i>*/}
+                    {/*    <p>answer</p>*/}
+                    {/*</button>*/}
                     <button className="btn btn-delete" onClick={deleteFlashcard}>
                         <i className="fas fa-trash-alt"></i>
                     </button>

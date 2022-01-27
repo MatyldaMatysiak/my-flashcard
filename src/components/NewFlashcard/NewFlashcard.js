@@ -13,7 +13,8 @@ export default function NewFlashcard({handleAddFlashcard, setModalDisplay, isFie
         setFilter("")
     }
 
-    const addNewFlashcard = () => {
+    const addNewFlashcard = (e) => {
+        e.preventDefault();
         const newFlashcard = {
             field,
             question,
@@ -31,7 +32,7 @@ export default function NewFlashcard({handleAddFlashcard, setModalDisplay, isFie
     }
 
     return (
-        <form onSubmit={(e) => e.preventDefault() } className="newFlashAddForm">
+        <form onSubmit={(e) => addNewFlashcard(e) } className="newFlashAddForm">
             <section className="flashcardInfo">
                 <div className="flashcardInfo__basic">
                     <div className="field">
@@ -69,7 +70,7 @@ export default function NewFlashcard({handleAddFlashcard, setModalDisplay, isFie
                                value={filter}
                                onChange={e => setFilter(e.target.value)}
                         />
-                        <button className="addButton" onClick={() => handleAddFilters(filter)}>
+                        <button type="button" className="addButton" onClick={() => handleAddFilters(filter)}>
                             <i> </i>
                         </button>
                     </div>
@@ -79,7 +80,7 @@ export default function NewFlashcard({handleAddFlashcard, setModalDisplay, isFie
                 </div>
             </section>
             <div className="buttonBox">
-                <button type="submit" className="btn btn__submit" onClick={addNewFlashcard}>Add</button>
+                <button type="submit" className="btn btn__submit">Add</button>
                 <button type="button" className="btn btn__cancel" onClick={handleCancelAdd}>Cancel</button>
             </div>
         </form>

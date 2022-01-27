@@ -20,7 +20,8 @@ export default function UpdateFlashcard({flash, setModalDisplay, handleEditFlash
         setFilter("")
     }
 
-    const updateFlashcard = () => {
+    const updateFlashcard = (e) => {
+        e.preventDefault();
         const newFlashcard = {
             field,
             question,
@@ -38,7 +39,7 @@ export default function UpdateFlashcard({flash, setModalDisplay, handleEditFlash
     }
 
     return (
-        <form onSubmit={(e) => e.preventDefault() } className="newFlashAddForm">
+        <form onSubmit={(e) => updateFlashcard(e) } className="newFlashAddForm">
             <section className="flashcardInfo">
                 <div className="flashcardInfo__basic">
                     <div className="field">
@@ -76,7 +77,7 @@ export default function UpdateFlashcard({flash, setModalDisplay, handleEditFlash
                                value={filter}
                                onChange={e => setFilter(e.target.value)}
                         />
-                        <button className="addButton" onClick={() => handleAddFilters(filter)}>
+                        <button type="button" className="addButton" onClick={() => handleAddFilters(filter)}>
                             <i> </i>
                         </button>
                     </div>
@@ -86,7 +87,7 @@ export default function UpdateFlashcard({flash, setModalDisplay, handleEditFlash
                 </div>
             </section>
             <div className="buttonBox">
-                <button type="submit" className="btn btn__submit" onClick={updateFlashcard}>Update</button>
+                <button type="submit" className="btn btn__submit" >Update</button>
                 <button type="button" className="btn btn__cancel" onClick={handleCancelUpdate}>Cancel</button>
             </div>
         </form>
