@@ -8,9 +8,16 @@
   margin: 5% auto;
   background-color: $color-white;
   border-radius: $spacing-base;
-  box-shadow: 0px 8px 24px 0px rgba(7, 2, 39, 0.4);
+  box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.15);
   padding: 5%;
   font-family: $font-text;
+
+  input,
+  textarea {
+    font-family: $font-text;
+    border: 1px solid $color-ligt-grey;
+    padding: $spacing-base*0.5;
+  }
 
   .flashcardInfo {
     display: flex;
@@ -61,8 +68,35 @@
         input {
           width: 80%;
         }
-        button {
+        .addButton {
           width: 2rem;
+          background-color: $color-secondary;
+          border: none;
+          border-radius: $spacing-base*0.25;
+          color: $color-white;
+        }
+      }
+
+      .filterList {
+        padding: $spacing-base;
+
+        li {
+          padding: $spacing-base*0.5;
+          display: flex;
+          justify-content: space-between;
+
+
+          .removeFilter {
+            background-color: $color-primary;
+            color: $color-white;
+            border: none;
+            border-radius: $spacing-base*0.25;
+
+            i {
+              padding: $spacing-base*0.25;
+
+            }
+          }
         }
       }
     }

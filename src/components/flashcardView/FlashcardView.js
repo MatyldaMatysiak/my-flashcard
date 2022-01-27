@@ -86,7 +86,6 @@ export default function FlashcardView({field, filteredSet, setFilteredSet, handl
                     />}
             </div>}
 
-
         </div>
     )
 }

@@ -31,6 +31,11 @@ export default function NewFlashcard({handleAddFlashcard, setModalDisplay, isFie
         setModalDisplay("close")
     }
 
+    const handleRemoveFilter = (actFilter) => {
+        console.log(actFilter)
+        setFilters([...filters.filter(element => element !== actFilter)])
+    }
+
     return (
         <form onSubmit={(e) => addNewFlashcard(e) } className="newFlashAddForm">
             <section className="flashcardInfo">
@@ -47,7 +52,7 @@ export default function NewFlashcard({handleAddFlashcard, setModalDisplay, isFie
                         <label htmlFor="question">Question</label>
                         <textarea name="question"
                                   id="question"
-                                  rows="5"
+                                  rows="4"
                                   value={question}
                                   onChange={e => setQuestion(e.target.value)}
                         />
@@ -56,7 +61,7 @@ export default function NewFlashcard({handleAddFlashcard, setModalDisplay, isFie
                         <label htmlFor="answer">Answer</label>
                         <textarea name="answer"
                                   id="answer"
-                                  rows="5"
+                                  rows="4"
                                   value={answer}
                                   onChange={e => setAnswer(e.target.value)}
                         />
@@ -71,11 +76,13 @@ export default function NewFlashcard({handleAddFlashcard, setModalDisplay, isFie
                                onChange={e => setFilter(e.target.value)}
                         />
                         <button type="button" className="addButton" onClick={() => handleAddFilters(filter)}>
-                            <i> </i>
+                            <i className="fas fa-plus"></i>
                         </button>
                     </div>
-                    <ul>
-                        {filters.map(filter => <li key={filter}>{filter}</li>)}
+                    <ul className="filterList">
+                        {filters.map(filter => <li key={filter}><p>{filter}</p><button type="button" className="removeFilter" onClick={() => handleRemoveFilter(filter)}>
+                            <i className="fas fa-times"></i>
+                        </button></li>)}
                     </ul>
                 </div>
             </section>

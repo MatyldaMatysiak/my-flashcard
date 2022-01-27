@@ -38,6 +38,11 @@ export default function UpdateFlashcard({flash, setModalDisplay, handleEditFlash
         setModalDisplay("")
     }
 
+    const handleRemoveFilter = (actFilter) => {
+        console.log(actFilter)
+        setFilters([...filters.filter(element => element !== actFilter)])
+    }
+
     return (
         <form onSubmit={(e) => updateFlashcard(e) } className="newFlashAddForm">
             <section className="flashcardInfo">
@@ -78,11 +83,13 @@ export default function UpdateFlashcard({flash, setModalDisplay, handleEditFlash
                                onChange={e => setFilter(e.target.value)}
                         />
                         <button type="button" className="addButton" onClick={() => handleAddFilters(filter)}>
-                            <i> </i>
+                            <i className="fas fa-plus"></i>
                         </button>
                     </div>
-                    <ul>
-                        {filters.map(filter => <li key={filter}>{filter}</li>)}
+                    <ul className="filterList">
+                        {filters.map(filter => <li key={filter}><p>{filter}</p><button type="button" className="removeFilter" onClick={() => handleRemoveFilter(filter)}>
+                            <i className="fas fa-times"></i>
+                        </button></li>)}
                     </ul>
                 </div>
             </section>
